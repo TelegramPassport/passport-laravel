@@ -1,0 +1,20 @@
+{
+    "name": "telegram/passport-laravel",
+    "version": "1.0.0",
+    "description": "Telegram Unofficial OAuth2 Provider for Laravel Socialite",
+    "keywords": ["telegram", "authorization", "login", "auth", "socialite"],
+    "license": "MIT",
+    "authors": [{
+        "name": "Codefuhrer",
+        "email": "codefuhrer@gmail.com"
+    }],
+    "require": {
+        "php": ">=5.5.9",
+        "socialiteproviders/manager": "^1.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "SocialiteProviders\\Telegram\\": "src/"
+        }
+    }
+}
