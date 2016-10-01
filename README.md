@@ -1,6 +1,11 @@
 # Telegram Unofficial OAuth2 Provider for Laravel Socialite
 
+**Note:** This package utilizes an unofficial service [telepass.me](https://telepass.me). Official OAuth API for Telegram does not exist.
+
 ## Installation
+
+### 0. Credentials
+Obtain your app ID and secret from [telepass.me](https://telepass.me). You must set up a valid name and callback URL.
 
 ### 1. Composer
 This assumes that you have composer installed globally:
@@ -21,14 +26,14 @@ For example:
     \SocialiteProviders\Manager\ServiceProvider::class, // add
 ];
 ```
-> **Note:** If you would like to use the Socialite Facade, you need to [install it](http://laravel.com/docs/5.0/authentication#social-authentication).
+**Note:** If you would like to use the Socialite Facade, you need to [install it](http://laravel.com/docs/5.0/authentication#social-authentication).
 
 ### 3. Add the Event and Listeners
 - Add `SocialiteProviders\Manager\SocialiteWasCalled` event to your `listen[]` array in `<app_name>/Providers/EventServiceProvider`.
 - Add your listeners (i.e. the ones from the providers) to the `SocialiteProviders\Manager\SocialiteWasCalled[]` that you just created.
 - The listener that you add for this provider is `'SocialiteProviders\Telegram\TelegramExtendSocialite@handle',`.
 
-> **Note:** You do not need to add anything for the built-in socialite providers unless you override them with your own providers.
+**Note:** You do not need to add anything for the built-in socialite providers unless you override them with your own providers.
 
 For example:
 
