@@ -1,3 +1,5 @@
+[![StyleCI](https://styleci.io/repos/69769315/shield?branch=master)](https://styleci.io/repos/69769315)
+
 # Telegram Unofficial OAuth2 Provider for Laravel Socialite
 
 **Note:** This package utilizes an unofficial service [telepass.me](https://telepass.me). Official OAuth API for Telegram does not exist.
