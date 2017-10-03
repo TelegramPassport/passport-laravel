@@ -2,9 +2,11 @@
 
 namespace SocialiteProviders\Telegram;
 
+use function json_decode, array_merge, sprintf;
+
+use SocialiteProviders\Manager\OAuth2\User;
 use Laravel\Socialite\Two\ProviderInterface;
 use SocialiteProviders\Manager\OAuth2\AbstractProvider;
-use SocialiteProviders\Manager\OAuth2\User;
 
 class Provider extends AbstractProvider implements ProviderInterface
 {
@@ -34,7 +36,7 @@ class Provider extends AbstractProvider implements ProviderInterface
     /**
      * {@inheritdoc}
      */
-    protected function getTokenUrl()
+    protected function getTokenUrl(): string
     {
         return 'https://telepass.me/oauth/token';
     }
@@ -46,7 +48,7 @@ class Provider extends AbstractProvider implements ProviderInterface
     {
         $response = $this->getHttpClient()->get('https://telepass.me/api/user', [
             'headers' => [
-                'Authorization' => 'Bearer '.$token,
+                'Authorization' => sprintf('Bearer %s', $token),
             ],
         ]);
 

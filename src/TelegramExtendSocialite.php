@@ -11,6 +11,8 @@ class TelegramExtendSocialite
      */
     public function handle(SocialiteWasCalled $socialiteWasCalled)
     {
-        $socialiteWasCalled->extendSocialite('telegram', __NAMESPACE__.'\Provider');
+        $socialiteWasCalled->extendSocialite(
+            'telegram', __NAMESPACE__.'\Provider'
+        );
     }
 }

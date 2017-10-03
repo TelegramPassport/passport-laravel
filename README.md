@@ -1,8 +1,8 @@
-[![StyleCI](https://styleci.io/repos/69769315/shield?branch=master)](https://styleci.io/repos/69769315)
-
-# Telegram Unofficial OAuth2 Provider for Laravel Socialite
+# Telegram OAuth2 Provider for Laravel
 
 **Note:** This package utilizes an unofficial service [telepass.me](https://telepass.me). Official OAuth API for Telegram does not exist.
+
+**Note:** This package requires php version 7.0 or higher.
 
 ## Installation
 
@@ -28,7 +28,7 @@ For example:
     \SocialiteProviders\Manager\ServiceProvider::class, // add
 ];
 ```
-**Note:** If you would like to use the Socialite Facade, you need to [install it](http://laravel.com/docs/5.0/authentication#social-authentication).
+**Note:** If you would like to use the Socialite Facade, you need to [install it](https://github.com/laravel/socialite).
 
 ### 3. Add the Event and Listeners
 - Add `SocialiteProviders\Manager\SocialiteWasCalled` event to your `listen[]` array in `<app_name>/Providers/EventServiceProvider`.
@@ -99,6 +99,17 @@ return Socialite::with('telegram')->stateless(false)->redirect();
 
 // to use stateless
 return Socialite::with('telegram')->stateless()->redirect();
+```
+
+### Retrieving the Access Token Response Body
+
+Laravel Socialite by default only allows access to the `access_token`. Which can be accessed via the `\Laravel\Socialite\User->token` public property. Sometimes you need access to the whole response body which may contain items such as a `refresh_token`.
+
+You can get the access token response body, after you called the `user()` method in Socialite, by accessing the property `$user->accessTokenResponseBody`;
+
+```php
+$user = Socialite::driver('telegram')->user();
+$accessTokenResponseBody = $user->accessTokenResponseBody;
 ```
 
 ## Credits
